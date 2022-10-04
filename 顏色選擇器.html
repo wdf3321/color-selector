@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #select {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="select"></div>
+    <span>紅色</span>
+    <input
+      type="range"
+      name="red"
+      id="red"
+      min="0"
+      max="255"
+      value="20"
+      step="1"
+    />
+    <span id="redvalue">20</span>
+    <input type="button" value="隨機" id="btnred" />
+    <br />
+    <span>綠色</span>
+    <input
+      type="range"
+      name="green"
+      id="green"
+      min="0"
+      max="255"
+      value="20"
+      step="1"
+    />
+    <span id="greenvalue">20</span>
+    <input type="button" value="隨機" id="btngreen" />
+    <br /><span>藍色</span>
+    <input
+      type="range"
+      name="blue"
+      id="blue"
+      min="0"
+      max="255"
+      value="20"
+      step="1"
+    />
+    <span id="bluevalue">20</span>
+    <input type="button" value="隨機" id="btnblue" />
+
+    <script>
+      const red = document.getElementById("red");
+      const blue = document.getElementById("blue");
+      const green = document.getElementById("green");
+      const select = document.getElementById("select");
+      const red1 = red.value;
+      const green1 = green.value;
+      const blue1 = blue.value;
+      red.oninput = () => {
+        redvalue.innerText = red.value;
+        select.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`;
+      };
+      blue.oninput = () => {
+        bluevalue.innerText = blue.value;
+        select.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`;
+      };
+      green.oninput = () => {
+        greenvalue.innerText = green.value;
+        select.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue.value})`;
+      };
+
+      btnred.onclick = () => {
+        const red1 = parseInt(Math.random() * 256);
+        red.value = red1;
+        redvalue.innerText = red1;
+        select.style.backgroundColor = `rgb(${red1}, ${green.value}, ${blue.value})`;
+      };
+      btngreen.onclick = () => {
+        const green1 = parseInt(Math.random() * 256);
+        green.value = green1;
+        greenvalue.innerText = green1;
+        select.style.backgroundColor = `rgb(${red.value}, ${green1}, ${blue.value})`;
+      };
+      btnblue.onclick = () => {
+        const blue1 = parseInt(Math.random() * 256);
+        blue.value = blue1;
+        bluevalue.innerText = blue1;
+        select.style.backgroundColor = `rgb(${red.value}, ${green.value}, ${blue1})`;
+      };
+    </script>
+  </body>
+</html>
